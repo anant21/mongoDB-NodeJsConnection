@@ -1,0 +1,76 @@
+//List Databases
+        await listDatabases(client);
+
+//CreateMany
+
+           await createMultipleListings(client, [{
+                name: "Infinite loft",
+                summary: "A charming loft in Paris",
+                bedrooms: 1,
+                bathrooms: 1,
+                beds: 5
+            },
+            {
+                name: "Private room in London",
+                summary: "Apartment",
+                bedrooms: 1,
+                bathrooms: 1
+            },
+            {
+                name: "Beautiful Beach House",
+                summary: "Enjoy relaxed beach living in this house with a private beach",
+                bedrooms: 4,
+                bathrooms: 2.5,
+                beds: 7,
+                last_review: new Date()
+            }]);
+
+//CreateOne
+
+await createListing(client,
+            {
+                name: "Lovely Loft",
+                summary: "A charming loft in Paris",
+                bedrooms: 1,
+                bathrooms: 1
+            }
+        );
+
+
+//findMany
+
+await findManyListingsWithMinimumBedBathAndMostRecentReviews(client,{
+            minBedrooms: 4,
+            minBathrooms: 5,
+            maxResults: 2
+        });
+
+
+//findOne
+
+await findOneListingByName(client, "Infinite Views");
+
+
+//updateOne
+
+await findOneListingByName(client, "Infinite loft");
+await updateListingByName(client, "Infinite loft", {bedrooms: 6, beds: 10});
+await findOneListingByName(client, "Infinite loft");
+
+//upsert
+
+await findOneListingByName(client, "Beautiful Beach House");
+await upsertListingByName(client, "Beautiful Beach House", {name:"Beautiful Beach House", bedrooms: 2, bathrooms: 2});
+await findOneListingByName(client, "Beautiful Beach House");
+
+//updateMany
+
+await updateAllListingsToHavePropertyType(client);
+
+//deleteOne
+
+await deleteListingByName(client, "Deluxe Loft Suite");
+
+//deleteMany
+
+await deleteListingsScrapedBeforeDate(client, new Date("2019-02-15"));
