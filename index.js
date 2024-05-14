@@ -7,8 +7,8 @@
 const {MongoClient} = require('mongodb');
 
 async function main(){
-    const uri = "mongodb+srv://<username>:<password>@cluster021-0kzxc.mongodb.net/test?retryWrites=true&w=majority";
-    const client = new MongoClient(uri, {useNewUrlParser: true, useUnifiedTopology: true});
+    //const uri = "mongodb+srv://<username>:<password>@cluster021-0kzxc.mongodb.net/test?retryWrites=true&w=majority";
+    //const client = new MongoClient(uri, {useNewUrlParser: true, useUnifiedTopology: true});
     try{
         await client.connect();
         await findOneListingByName(client, "Double Room en-suite (307)");
